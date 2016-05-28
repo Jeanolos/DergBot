@@ -153,6 +153,19 @@ namespace OakBot
                     MainWindow.instance.prevSong();
                 }
             }
+            else if (command == "!volume")
+            {
+                string[] splitMessage = message.Message.Split(' ');
+                if(splitMessage.Length == 2)
+                {
+                    MainWindow.instance.cefSong.Load("javascript:var mv = document.getElementById('movie_player'); mv.setVolume(" + splitMessage[1] + "); ");
+                    MainWindow.instance.lblVol.Content = splitMessage[1];
+                    SendAndShowMessage("Set volume to " + splitMessage[1]);
+                }else
+                {
+                    SendAndShowMessage("Volume is currenty at " + MainWindow.instance.lblVol.Content);
+                }
+            }
             else if (command == "!link") {
                 string[] splitMessage = message.Message.Split(new char[] { ' ' }, 2);
                 if (splitMessage.Count() != 2)
