@@ -160,7 +160,15 @@ namespace OakBot
                     SendAndShowMessage("In order to link your Twitch name to this bot, you have to get your Discord User ID. You can get that by using !id in Discord. Then, proceed to use !link [id] here in chat. Further instructions are following in a Discord message!");
                 } else
                 {
-                    Channel priv = MainWindow.discord.CreatePrivateChannel(ulong.Parse(splitMessage[1])).Result;
+                    Channel priv;
+                    ulong dummy = 0;
+                    if (ulong.TryParse(splitMessage[1], out dummy))
+                    {
+                        priv = MainWindow.discord.CreatePrivateChannel(ulong.Parse(splitMessage[1])).Result;
+                    }else
+                    {
+                        priv = null;
+                    }
                     if (priv.IsPrivate && priv != null)
                     {
                         string msg = string.Format(@"Hello!

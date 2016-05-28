@@ -177,7 +177,7 @@ namespace OakBot
                              "  - Song Requests (the controls are only working for YouTube at the moment)\n" +
                              "  - Quotes\n" +
                              "  - Follow Date\n" +
-                             "- Discord Integration (user unspecific commands work without problems, while the user specific ones are yet to be handled)\n" +
+                             "- Discord Integration\n" +
                              "- Import from Ankhbot\n" +
                              "- Dashboard and Viewer related stuff\n\n" +
                              "IMPLEMENTED, BUT NOT FULLY WORKING:\n" +
