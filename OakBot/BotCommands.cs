@@ -358,7 +358,7 @@ The user {0} wants to link his Twitch account with your Discord name!
 
         #region Private Methods
 
-        private static void SendAndShowMessage(string message)
+        public static void SendAndShowMessage(string message)
         {
             // Send the message to IRC
             MainWindow.instance.botChatConnection.SendChatMessage(message);

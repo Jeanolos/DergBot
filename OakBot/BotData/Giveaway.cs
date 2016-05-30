@@ -43,6 +43,7 @@ namespace OakBot
             responseTime = response;
             entries = new ObservableCollection<string>();
             winners = new ObservableCollection<string>();
+            winner = null;
 
             giveawayTimer = new Timer();
             giveawayTimer.Interval = giveawayTime.TotalMilliseconds;
@@ -283,7 +284,7 @@ namespace OakBot
             winners.Add(rolledViewer.UserName);
             winner = rolledViewer;
 
-            WinnerChosenEventArgs args = new WinnerChosenEventArgs(rolledViewer);
+            WinnerChosenEventArgs args = new WinnerChosenEventArgs(rolledViewer, this);
             OnWinnerChosen(args);
         }
 
@@ -297,14 +298,14 @@ namespace OakBot
             //giveawayTimer = new Timer(cb, new ManualResetEvent(true), new TimeSpan(0), giveawayTime);
             running = true;
             MainWindow.instance.botChatConnection.ChatMessageReceived += BotChatConnection_ChatMessageReceived;
-            MainWindow.instance.botChatConnection.SendChatMessage(string.Format("{0} giveaway has started! Type {1} in chat to enter! Following is {2} Duration: {3}h {4}m {5}s", giveawayName, keyword, (needsFollow ? "needed." : "not needed."), giveawayTime.Hours, giveawayTime.Minutes, giveawayTime.Seconds));
+            BotCommands.SendAndShowMessage(string.Format("{0} giveaway has started! Type {1} in chat to enter! Following is {2} Duration: {3}h {4}m {5}s", giveawayName, keyword, (needsFollow ? "needed." : "not needed."), giveawayTime.Hours, giveawayTime.Minutes, giveawayTime.Seconds));
         }
 
         public void Stop()
         {
             giveawayTimer.Dispose();
             running = false;
-            MainWindow.instance.botChatConnection.SendChatMessage(string.Format("{0} giveaway ended! Winner will be drawn by the streamer!"));
+            BotCommands.SendAndShowMessage(string.Format("{0} giveaway ended! Winner will be drawn by the streamer!", giveawayName));
         }
 
         #endregion Public Methods
@@ -329,8 +330,7 @@ namespace OakBot
                     if (!entries.Contains(e.Message.Author))
                     {
                         entries.Add(e.Message.Author);
-                        ViewerEntered(this, new ViewerEnteredEventArgs(e.Message.Author));
-                        MainWindow.instance.botChatConnection.SendChatMessage(string.Format("{0}, you've entered the {1} giveaway!", e.Message.Author, giveawayName));
+                        ViewerEntered(this, new ViewerEnteredEventArgs(e.Message.Author, this));
                     }
                 }
             }
@@ -339,7 +339,7 @@ namespace OakBot
                 if (!entries.Contains(e.Message.Author))
                 {
                     entries.Add(e.Message.Author);
-                    ViewerEntered(this, new ViewerEnteredEventArgs(e.Message.Author));
+                    ViewerEntered(this, new ViewerEnteredEventArgs(e.Message.Author, this));
                 }
             }
         }
