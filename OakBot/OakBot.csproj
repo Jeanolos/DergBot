@@ -101,6 +101,18 @@
       <HintPath>packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Nito.AsyncEx, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Concurrent, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.Concurrent.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Nito.AsyncEx.Enlightenment, Version=3.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Nito.AsyncEx.3.0.1\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
       <Private>True</Private>
@@ -123,6 +135,10 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="UIAutomationProvider" />
+    <Reference Include="WebSocket4Net, Version=0.14.1.0, Culture=neutral, PublicKeyToken=eb4e154b696bf72a, processorArchitecture=MSIL">
+      <HintPath>packages\WebSocket4Net.0.14.1\lib\net45\WebSocket4Net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
