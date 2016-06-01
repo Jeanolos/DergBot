@@ -195,6 +195,9 @@
                     <Slider x:Name="slSubLuck" HorizontalAlignment="Left" Margin="112,337,0,0" VerticalAlignment="Top" Width="280" TickPlacement="BottomRight"/>
                     <Label x:Name="lblSubLuck" Content="Subscriber Luck:" HorizontalAlignment="Left" Margin="12,334,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="btnAddEditGw" Content="Add/Edit" HorizontalAlignment="Left" Margin="397,213,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnAddEditGw_Click"/>
+                    <Button x:Name="btnStopGw" Content="Stop" HorizontalAlignment="Left" Margin="741,213,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnStopGw_Click"/>
+                    <Button x:Name="btnStartGw" Content="Start" HorizontalAlignment="Left" Margin="661,213,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="btnStartGw_Click"/>
+                    <Button x:Name="btnDrawWinner" Content="Draw Winner" HorizontalAlignment="Left" Margin="581,213,0,0" VerticalAlignment="Top" Width="75" Height="23" IsEnabled="False" Click="btnDrawWinner_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Commands">

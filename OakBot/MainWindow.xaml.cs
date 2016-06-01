@@ -1008,13 +1008,54 @@ namespace OakBot
 
         private void lvGiveaways_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Giveaway selected = (Giveaway)lvGiveaways.SelectedItem;
+            Giveaway selected = colGiveaways.FirstOrDefault(x => x.GiveawayName == ((Giveaway)lvGiveaways.SelectedItem).GiveawayName);
             tbGwName.Text = selected.GiveawayName;
+            tbTimeToEnter.Text = selected.GiveawayTime.TotalSeconds.ToString();
+            tbKeyword.Text = selected.Keyword;
+            tbPrice.Text = selected.Price.ToString();
+            cbNeedsFollow.IsChecked = selected.NeedsFollow;
+            slSubLuck.Value = selected.SubscriberLuck;
+            tbResponseTime.Text = selected.ResponseTime.TotalSeconds.ToString();
+            if(selected.Winner != null)
+            {
+                btnDrawWinner.IsEnabled = true;
+            }else
+            {
+                btnDrawWinner.IsEnabled = false;
+            }
         }
 
         private void btnAddEditGw_Click(object sender, RoutedEventArgs e)
         {
+            Giveaway search = colGiveaways.FirstOrDefault(x => x.GiveawayName == tbGwName.Text);
+            if(search == null)
+            {
+                search = new Giveaway(tbGwName.Text, new TimeSpan(0, 0, int.Parse(tbTimeToEnter.Text)), tbKeyword.Text, int.Parse(tbPrice.Text), cbNeedsFollow.IsChecked.Value, byte.Parse(slSubLuck.Value.ToString()), new TimeSpan(0, 0, int.Parse(tbResponseTime.Text)));
+                search.ViewerEntered += DefaultGiveawayViewerEntered;
+                search.WinnerChosen += DefaultGiveawayWinnerChosen;
+                colGiveaways.Add(search);
+            }else
+            {
+                search.GiveawayName = tbGwName.Text;
+                search.GiveawayTime = new TimeSpan(0, 0, int.Parse(tbTimeToEnter.Text));
+                search.Keyword = tbKeyword.Text;
+                search.Price = int.Parse(tbPrice.Text);
+                search.NeedsFollow = cbNeedsFollow.IsChecked.Value;
+                search.SubscriberLuck = byte.Parse(slSubLuck.Value.ToString());
+                search.ResponseTime = new TimeSpan(0, 0, int.Parse(tbResponseTime.Text));
+            }
+        }
 
+        private void DefaultGiveawayViewerEntered(object sender, ViewerEnteredEventArgs e)
+        {
+            BotCommands.SendAndShowMessage(string.Format("{0} has entered the {1} giveaway!", e.Viewer, e.Giveaway.GiveawayName));
+        }
+
+        private void DefaultGiveawayWinnerChosen(object sender, WinnerChosenEventArgs e)
+        {
+            BotCommands.SendAndShowMessage(string.Format("{0} has won the {1} giveaway!", e.Winner.UserName, e.Giveaway.GiveawayName));
+            btnDrawWinner.IsEnabled = true;
+            WindowViewerChat vc = new WindowViewerChat(this, e.Winner);
         }
 
         private void txtToken_LostFocus(object sender, RoutedEventArgs e)
@@ -1027,6 +1068,25 @@ namespace OakBot
             {
                 Config.DiscordBotToken = txtToken.Text;
             }
+        }
+
+        private void btnStartGw_Click(object sender, RoutedEventArgs e)
+        {
+            Giveaway selected = colGiveaways.FirstOrDefault(x => x.GiveawayName == ((Giveaway)lvGiveaways.SelectedItem).GiveawayName);
+            selected.Start();
+        }
+
+        private void btnStopGw_Click(object sender, RoutedEventArgs e)
+        {
+            Giveaway selected = colGiveaways.FirstOrDefault(x => x.GiveawayName == ((Giveaway)lvGiveaways.SelectedItem).GiveawayName);
+            selected.Stop();
+            btnDrawWinner.IsEnabled = true;
+        }
+
+        private void btnDrawWinner_Click(object sender, RoutedEventArgs e)
+        {
+            Giveaway selected = colGiveaways.FirstOrDefault(x => x.GiveawayName == ((Giveaway)lvGiveaways.SelectedItem).GiveawayName);
+            selected.DrawWinner();
         }
 
         private void textBoxStreamerName_LostFocus(object sender, RoutedEventArgs e)

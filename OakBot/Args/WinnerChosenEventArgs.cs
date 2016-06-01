@@ -8,13 +8,16 @@ namespace OakBot.Args
 
         private Viewer winner;
 
+        private Giveaway giveaway;
+
         #endregion Private Fields
 
         #region Public Constructors
 
-        public WinnerChosenEventArgs(Viewer viewer)
+        public WinnerChosenEventArgs(Viewer viewer, Giveaway giveaway)
         {
             winner = viewer;
+            this.giveaway = giveaway;
         }
 
         #endregion Public Constructors
@@ -26,6 +29,17 @@ namespace OakBot.Args
             get
             {
                 return winner;
+            }
+        }
+
+        public Giveaway Giveaway
+        {
+            get
+            {
+                return giveaway;
+            }set
+            {
+                giveaway = value;
             }
         }
 
