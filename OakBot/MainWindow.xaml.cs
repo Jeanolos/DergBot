@@ -1118,6 +1118,16 @@ namespace OakBot
             selected.DrawWinner();
         }
 
+        private void lvGiveaways_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if(lvGiveaways.SelectedIndex != -1)
+            {
+                Giveaway selected = colGiveaways.First(x => x.GiveawayName == ((Giveaway)lvGiveaways.SelectedItem).GiveawayName);
+                WindowGiveawayViewers gw = new WindowGiveawayViewers(selected);
+                gw.Show();
+            }
+        }
+
         private void textBoxStreamerName_LostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBoxStreamerName.Text))

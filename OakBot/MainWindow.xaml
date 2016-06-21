@@ -166,7 +166,7 @@
             </TabItem>
             <TabItem Header="Giveaways">
                 <Grid Background="#FF363636" Margin="0">
-                    <ListView x:Name="lvGiveaways" HorizontalAlignment="Left" Height="195" Margin="10,10,0,0" VerticalAlignment="Top" Width="806" SelectionChanged="lvGiveaways_SelectionChanged">
+                    <ListView x:Name="lvGiveaways" HorizontalAlignment="Left" Height="195" Margin="10,10,0,0" VerticalAlignment="Top" Width="806" SelectionChanged="lvGiveaways_SelectionChanged" MouseDoubleClick="lvGiveaways_MouseDoubleClick">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Width="200" Header="Giveaway Name" DisplayMemberBinding="{Binding GiveawayName}"/>
@@ -255,11 +255,11 @@
             </TabItem>
             <TabItem x:Name="tabDiscord" Header="Discord">
                 <Grid Background="#FF363636" Margin="0">
-                    <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="23" Margin="81,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="173" />
-                    <Label x:Name="lblDUsername" Content="Username:" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" />
-                    <Label x:Name="lblServerBrowser" Content="Server Browser:" HorizontalAlignment="Left" Margin="10,127,0,0" VerticalAlignment="Top" />
-                    <TreeView x:Name="tvServerBrowser" HorizontalAlignment="Left" Height="193" Margin="10,158,0,0" VerticalAlignment="Top" Width="176" />
-                    <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="191,331,0,0" VerticalAlignment="Top" Width="75" Click="btnRefresh_Click" />
+                    <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Height="23" Margin="80,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="173" />
+                    <Label x:Name="lblDUsername" Content="Username:" HorizontalAlignment="Left" Margin="9,7,0,0" VerticalAlignment="Top" />
+                    <Label x:Name="lblServerBrowser" Content="Server Browser:" HorizontalAlignment="Left" Margin="9,38,0,0" VerticalAlignment="Top" />
+                    <TreeView x:Name="tvServerBrowser" HorizontalAlignment="Left" Height="302" Margin="9,69,0,0" VerticalAlignment="Top" Width="176" />
+                    <Button x:Name="btnRefresh" Content="Refresh" HorizontalAlignment="Left" Margin="190,351,0,0" VerticalAlignment="Top" Width="75" Click="btnRefresh_Click" />
                 </Grid>
             </TabItem>
         </TabControl>

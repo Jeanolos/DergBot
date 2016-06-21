@@ -48,6 +48,11 @@ namespace OakBot
                     new Task(() =>
                     {
                         Trace.WriteLine(DateTime.UtcNow.ToString("o") + " -> Executing Point interval set to: " + intervalPoints);
+                        foreach(Viewer v in MainWindow.colViewers)
+                        {
+                            v.Points += 10;
+                            DatabaseUtils.UpdateViewer(v);
+                        }
                     }).Start();
                 }
 
@@ -57,6 +62,7 @@ namespace OakBot
                     new Task(() =>
                     {
                         Trace.WriteLine(DateTime.UtcNow.ToString("o") + " -> Executing Save interval set to: " + intervalSave);
+                        DatabaseUtils.UpdateAllViewers();
                     }).Start();
                 }
             }

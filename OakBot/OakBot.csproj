@@ -203,6 +203,9 @@
     <Compile Include="WindowDatabaseCleanup.xaml.cs">
       <DependentUpon>WindowDatabaseCleanup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WindowGiveawayViewers.xaml.cs">
+      <DependentUpon>WindowGiveawayViewers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WindowImportData.xaml.cs">
       <DependentUpon>WindowImportData.xaml</DependentUpon>
     </Compile>
@@ -235,6 +238,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WindowDatabaseCleanup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WindowGiveawayViewers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
