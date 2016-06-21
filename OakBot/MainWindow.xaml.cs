@@ -343,53 +343,24 @@ namespace OakBot
             windowImport.ShowDialog();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             if((string)btnLogin.Content == "Login")
             {
                 //https://discordapp.com/oauth2/authorize?client_id=168646630260736000&scope=bot&permissions=267648063
-                discord.Connect(txtToken.Text);
-                while (discord.State != ConnectionState.Connected)
-                {
-                    Task.Delay(25);
-                }
+                await discord.Connect(txtToken.Text);
+                //while (discord.State != ConnectionState.Connected)
+                //{
+                //    Task.Delay(25);
+                //}
                 discord.MessageReceived += Discord_MessageReceived;
                 txtUsername.Text = discord.CurrentUser.Name;
-                int serverCounter = 0, channelCounter = 0, userCounter = 0;
-                foreach (Server s in discord.Servers)
-                {
-                    serverCounter++;
-                    TreeViewItem server = new TreeViewItem();
-                    server.Header = s.Name;
-                    TreeViewItem voice = new TreeViewItem(), text = new TreeViewItem();
-                    voice.Header = "Voice Channels";
-                    text.Header = "Text Channels";
-                    foreach (Discord.Channel c in s.VoiceChannels)
-                    {
-                        channelCounter++;
-                        TreeViewItem channel = new TreeViewItem();
-                        channel.Header = c.Name;
-                        foreach (Discord.User u in c.Users)
-                        {
-                            userCounter++;
-                            channel.Items.Add(u.Name);
-                        }
-                        voice.Items.Add(channel);
-                    }
-                    foreach (Discord.Channel c in s.TextChannels)
-                    {
-                        channelCounter++;
-                        text.Items.Add(c);
-                    }
-                    server.Items.Add(voice);
-                    server.Items.Add(text);
-                    tvServerBrowser.Items.Add(server);
-                }
+                
                 btnLogin.Content = "Logout";
             }
             else
             {
-                discord.Disconnect();
+                await discord.Disconnect();
                 tvServerBrowser.Items.Clear();
                 btnLogin.Content = "Login";
             }
