@@ -106,8 +106,8 @@ namespace OakBot
 
             discord = new DiscordClient(x =>
             {
-                x.AppName = "OakBot";
-                x.AppUrl = "http://github.com/ocgineer/OakBot";
+                x.AppName = "DergBot";
+                x.AppUrl = "http://github.com/jeanolos/OakBot";
                 x.AppVersion = FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion;
                 x.UsePermissionsCache = false;
             });
@@ -169,7 +169,7 @@ namespace OakBot
             colSongs.Add(new Song("https://www.youtube.com/watch?v=VEAy700YGuU"));
             colSongs.Add(new Song("https://soundcloud.com/aivisura/steven-universe-strong-in-the-real-way-rebecca-sugar"));
 
-            string message = "Hello and welcome to the first OakBot Alpha ever to be released! I know it took some time, but I also have a private life, you know? ;)\n\n" +
+            string message = "Hello and welcome to the first DergBot Alpha ever to be released! I know it took some time, but I also have a private life, you know? ;)\n\n" +
                              "Anyways, this version has not many functions yet, but the ones that are listed here, are fully working.\n\n" +
                              "WORKING:\n" +
                              "- Twitch Chat\n" +
@@ -179,13 +179,13 @@ namespace OakBot
                              "  - Follow Date\n" +
                              "- Discord Integration\n" +
                              "- Import from Ankhbot\n" +
+                             "- Giveaways\n" +
                              "- Dashboard and Viewer related stuff\n\n" +
                              "IMPLEMENTED, BUT NOT FULLY WORKING:\n" +
-                             "- Giveaways\n" +
                              "- Stream Currency Gain\n" +
                              "- The UI itself\n\n" +
                              "I know, there's much to do, but bear with me. I'm working as hard as I can c:";
-            MessageBox.Show(message, "OakBot Alpha 1");
+            MessageBox.Show(message, "DergBot Alpha 1");
 
             // BackgroundTask Thread
             BackgroundTasks bg = new BackgroundTasks(60, 120);
@@ -319,7 +319,7 @@ namespace OakBot
             RunManualCommercial(90);
         }
 
-        private void btnBotConnect_Click(object sender, RoutedEventArgs e)
+        public void btnBotConnect_Click(object sender, RoutedEventArgs e)
         {
             if (btnBotConnect.Content.ToString() == "Connect")
             {
@@ -337,13 +337,13 @@ namespace OakBot
             windowCleanup.ShowDialog();
         }
 
-        private void btnImport_Click(object sender, RoutedEventArgs e)
+        public void btnImport_Click(object sender, RoutedEventArgs e)
         {
             WindowImportData windowImport = new WindowImportData();
             windowImport.ShowDialog();
         }
 
-        private async void btnLogin_Click(object sender, RoutedEventArgs e)
+        public async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             if((string)btnLogin.Content == "Login")
             {
@@ -483,7 +483,7 @@ namespace OakBot
             MessageBox.Show(string.Format("{0} servers, {1} channels and {2} users added!", serverCounter, channelCounter, userCounter));
         }
 
-        private void btnStreamerConnect_Click(object sender, RoutedEventArgs e)
+        public void btnStreamerConnect_Click(object sender, RoutedEventArgs e)
         {
             if (btnBotConnect.Content.ToString() != "Connect")
             {
@@ -545,12 +545,12 @@ namespace OakBot
             }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        public void button_Click(object sender, RoutedEventArgs e)
         {
             Utils.StartWebserver();
         }
 
-        private void buttonBotConnect_Click(object sender, RoutedEventArgs e)
+        public void buttonBotConnect_Click(object sender, RoutedEventArgs e)
         {
             if (textBoxBotName.Text == "notSet" || string.IsNullOrWhiteSpace(textBoxBotName.Text))
             {
@@ -564,7 +564,7 @@ namespace OakBot
             }
         }
 
-        private void buttonStreamerConnect_Click(object sender, RoutedEventArgs e)
+        public void buttonStreamerConnect_Click(object sender, RoutedEventArgs e)
         {
             if (textBoxStreamerName.Text == "notSet" || string.IsNullOrWhiteSpace(textBoxStreamerName.Text))
             {
@@ -578,7 +578,7 @@ namespace OakBot
             }
         }
 
-        private void cbAutoConnectBot_Checked(object sender, RoutedEventArgs e)
+        public void cbAutoConnectBot_Checked(object sender, RoutedEventArgs e)
         {
             if (cbAutoConnectBot.IsChecked == true)
             {
@@ -590,7 +590,7 @@ namespace OakBot
             }
         }
 
-        private void cbAutoConnectBot_Unchecked(object sender, RoutedEventArgs e)
+        public void cbAutoConnectBot_Unchecked(object sender, RoutedEventArgs e)
         {
             if (cbAutoConnectBot.IsChecked == false)
             {
@@ -602,7 +602,7 @@ namespace OakBot
             }
         }
 
-        private void cbAutoConnectStreamer_Checked(object sender, RoutedEventArgs e)
+        public void cbAutoConnectStreamer_Checked(object sender, RoutedEventArgs e)
         {
             if (cbAutoConnectStreamer.IsChecked == true)
             {
@@ -614,7 +614,7 @@ namespace OakBot
             }
         }
 
-        private void cbAutoConnectStreamer_Unchecked(object sender, RoutedEventArgs e)
+        public void cbAutoConnectStreamer_Unchecked(object sender, RoutedEventArgs e)
         {
             if (cbAutoConnectStreamer.IsChecked == false)
             {
@@ -683,12 +683,12 @@ namespace OakBot
             }
         }
 
-        private void comboBox_Copy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void comboBox_Copy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // TODO
         }
 
-        private void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void comboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             // TODO
         }
@@ -846,7 +846,7 @@ namespace OakBot
             MessageBox.Show(text);
         }
 
-        private void listViewChat_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        public void listViewChat_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (listViewChat.SelectedIndex != -1)
             {
@@ -875,7 +875,7 @@ namespace OakBot
             }
         }
 
-        private void lvSongs_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        public void lvSongs_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (lvSongs.SelectedIndex != -1)
             {
@@ -886,7 +886,7 @@ namespace OakBot
             }
         }
 
-        private void lvViewerDatabase_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        public void lvViewerDatabase_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (lvViewerDatabase.SelectedIndex != -1)
             {
@@ -909,11 +909,11 @@ namespace OakBot
             }
         }
 
-        private void OakBot_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        public void OakBot_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
         }
 
-        private async void RunManualCommercial(int length)
+        public async void RunManualCommercial(int length)
         {
             int activationDelay;
 
@@ -964,12 +964,12 @@ namespace OakBot
             }
         }
 
-        private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        public void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             cefSong.Load("javascript:var mv = document.getElementById('movie_player'); mv.setVolume(" + e.NewValue + "); ");
         }
 
-        private void SpeakAs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void SpeakAs_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (accountStreamer != null)
             {
@@ -984,7 +984,7 @@ namespace OakBot
             }
         }
 
-        private void tbFilterOnName_TextChanged(object sender, TextChangedEventArgs e)
+        public void tbFilterOnName_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (databaseView != null)
             {
@@ -993,7 +993,7 @@ namespace OakBot
             }
         }
 
-        private void textBoxBotName_LostFocus(object sender, RoutedEventArgs e)
+        public void textBoxBotName_LostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBoxBotName.Text))
             {
@@ -1006,7 +1006,7 @@ namespace OakBot
             }
         }
 
-        private void lvGiveaways_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void lvGiveaways_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Giveaway selected = colGiveaways.FirstOrDefault(x => x.GiveawayName == ((Giveaway)lvGiveaways.SelectedItem).GiveawayName);
             tbGwName.Text = selected.GiveawayName;
@@ -1025,7 +1025,7 @@ namespace OakBot
             }
         }
 
-        private void btnAddEditGw_Click(object sender, RoutedEventArgs e)
+        public void btnAddEditGw_Click(object sender, RoutedEventArgs e)
         {
             Giveaway search = colGiveaways.FirstOrDefault(x => x.GiveawayName == tbGwName.Text);
             if(search == null)
@@ -1046,19 +1046,19 @@ namespace OakBot
             }
         }
 
-        private void DefaultGiveawayViewerEntered(object sender, ViewerEnteredEventArgs e)
+        public void DefaultGiveawayViewerEntered(object sender, ViewerEnteredEventArgs e)
         {
             BotCommands.SendAndShowMessage(string.Format("{0} has entered the {1} giveaway!", e.Viewer, e.Giveaway.GiveawayName));
         }
 
-        private void DefaultGiveawayWinnerChosen(object sender, WinnerChosenEventArgs e)
+        public void DefaultGiveawayWinnerChosen(object sender, WinnerChosenEventArgs e)
         {
             BotCommands.SendAndShowMessage(string.Format("{0} has won the {1} giveaway!", e.Winner.UserName, e.Giveaway.GiveawayName));
             btnDrawWinner.IsEnabled = true;
             WindowViewerChat vc = new WindowViewerChat(this, e.Winner);
         }
 
-        private void txtToken_LostFocus(object sender, RoutedEventArgs e)
+        public void txtToken_LostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBoxBotName.Text))
             {
@@ -1070,26 +1070,26 @@ namespace OakBot
             }
         }
 
-        private void btnStartGw_Click(object sender, RoutedEventArgs e)
+        public void btnStartGw_Click(object sender, RoutedEventArgs e)
         {
             Giveaway selected = colGiveaways.FirstOrDefault(x => x.GiveawayName == ((Giveaway)lvGiveaways.SelectedItem).GiveawayName);
             selected.Start();
         }
 
-        private void btnStopGw_Click(object sender, RoutedEventArgs e)
+        public void btnStopGw_Click(object sender, RoutedEventArgs e)
         {
             Giveaway selected = colGiveaways.FirstOrDefault(x => x.GiveawayName == ((Giveaway)lvGiveaways.SelectedItem).GiveawayName);
             selected.Stop();
             btnDrawWinner.IsEnabled = true;
         }
 
-        private void btnDrawWinner_Click(object sender, RoutedEventArgs e)
+        public void btnDrawWinner_Click(object sender, RoutedEventArgs e)
         {
             Giveaway selected = colGiveaways.FirstOrDefault(x => x.GiveawayName == ((Giveaway)lvGiveaways.SelectedItem).GiveawayName);
             selected.DrawWinner();
         }
 
-        private void lvGiveaways_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        public void lvGiveaways_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if(lvGiveaways.SelectedIndex != -1)
             {
@@ -1099,7 +1099,7 @@ namespace OakBot
             }
         }
 
-        private void textBoxStreamerName_LostFocus(object sender, RoutedEventArgs e)
+        public void textBoxStreamerName_LostFocus(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textBoxStreamerName.Text))
             {

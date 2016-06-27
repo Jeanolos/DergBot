@@ -6,62 +6,64 @@
         xmlns:local="clr-namespace:OakBot"
         xmlns:cs="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         mc:Ignorable="d"
-        Title="OakBot" Height="450" Width="850" WindowStartupLocation="CenterOwner" Background="{x:Null}" SizeToContent="Height" MinWidth="850" MaxWidth="850" MinHeight="400" MaxHeight="800" Foreground="{x:Null}" Closing="OakBot_Closing">
+        Title="DergBot" Height="461" Width="849" WindowStartupLocation="CenterOwner" Background="{x:Null}" MinWidth="850" MaxWidth="850" MinHeight="400" MaxHeight="800" Foreground="{x:Null}" Closing="OakBot_Closing">
     <Window.TaskbarItemInfo>
-        <TaskbarItemInfo Description="OakBot Running" />
+        <TaskbarItemInfo Description="DergBot running" />
     </Window.TaskbarItemInfo>
     <Grid Background="Black">
         <TabControl x:Name="tabControl" BorderThickness="2" Padding="2" SelectedIndex="0" Margin="0,0,8,8">
             <TabItem x:Name="tabMainSettings" Header="Settings">
-                <Grid Background="#FF363636" Margin="0">
-                    <GroupBox x:Name="GroupTwitchStreamerLogin" Header="STREAMER LOGIN" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top" Height="74" Width="806" BorderBrush="Black">
-                        <Grid Margin="0">
-                            <Label x:Name="LabelStreamerAccount" Content="Streamer Name" HorizontalAlignment="Left" Margin="1,9,0,0" VerticalAlignment="Top" FontSize="18.667" />
-                            <TextBox x:Name="textBoxStreamerName" HorizontalAlignment="Left" Margin="144,12,0,0" TextWrapping="Wrap" Width="170" ToolTip="Name of the streamer Twitch account." Height="30" VerticalAlignment="Top" Text="StreamerName" FontSize="18.667" LostFocus="textBoxStreamerName_LostFocus" />
-                            <Button x:Name="buttonStreamerConnect" Content="" HorizontalAlignment="Left" Height="32" Margin="325,10,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" ToolTip="Connect the streamer account with Twitch." Click="buttonStreamerConnect_Click">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="images/Twitch_connect_button.png" />
-                                </Button.Background>
-                            </Button>
-                            <Button x:Name="btnStreamerConnect" Content="Connect" HorizontalAlignment="Left" Margin="709,10,0,0" VerticalAlignment="Top" Width="75" Height="30" Click="btnStreamerConnect_Click" />
-                            <CheckBox x:Name="cbAutoConnectStreamer" Content="Auto Connect" HorizontalAlignment="Left" Margin="611,18,0,0" VerticalAlignment="Top" Checked="cbAutoConnectStreamer_Checked" Unchecked="cbAutoConnectStreamer_Unchecked" />
-                        </Grid>
-                    </GroupBox>
-                    <Button x:Name="btnImport" Content="Import" HorizontalAlignment="Left" Margin="741,351,0,0" VerticalAlignment="Top" Width="75" Click="btnImport_Click" />
-                    <GroupBox x:Name="GroupTwitchBotLogin" Header="BOT LOGIN" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="109" Width="806" BorderBrush="Black">
-                        <Grid Margin="0">
-                            <Label x:Name="lblBotAccount" Content="Bot Name" HorizontalAlignment="Left" Margin="10,0,0,48" VerticalAlignment="Bottom" FontSize="18.667" />
-                            <TextBox x:Name="textBoxBotName" HorizontalAlignment="Left" Margin="146,0,0,50" TextWrapping="Wrap" Width="170" ToolTip="Name of the bot Twitch account." Height="30" VerticalAlignment="Bottom" Text="BotName" FontSize="18.667" LostFocus="textBoxBotName_LostFocus" />
-                            <Button x:Name="buttonBotConnect" Content="" HorizontalAlignment="Left" Height="32" Margin="321,0,0,50" VerticalAlignment="Bottom" Width="170" BorderThickness="0" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Connect the bot account with Twitch." Click="buttonBotConnect_Click">
-                                <Button.Background>
-                                    <ImageBrush ImageSource="images/Twitch_connect_button.png" />
-                                </Button.Background>
-                            </Button>
-                            <Button x:Name="btnBotConnect" Content="Connect" HorizontalAlignment="Left" Margin="709,7,0,0" VerticalAlignment="Top" Width="75" Click="btnBotConnect_Click" Height="30" />
-                            <!--<TextBox x:Name="tbChannelName" HorizontalAlignment="Left" Height="30" Margin="146,42,0,0" TextWrapping="Wrap" Text="{Binding Path=(local:Config.ChannelName), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="170" FontSize="18.667" />-->
-                            <TextBox x:Name="tbChannelName" HorizontalAlignment="Left" Height="30" Margin="146,42,0,0" TextWrapping="Wrap" Text="{Binding ChannelName, Source={StaticResource Config}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="170" FontSize="18.667" />
-                            <Label x:Name="lblChannelName" Content="Channel Name" HorizontalAlignment="Left" Margin="10,0,0,12" VerticalAlignment="Bottom" FontSize="18.667" />
-                            <Label x:Name="lblServer" Content="Server" HorizontalAlignment="Left" Margin="321,0,0,11" VerticalAlignment="Bottom" FontSize="18.667" />
-                            <Label x:Name="lblPort" Content="Port" HorizontalAlignment="Left" Margin="519,0,0,10" VerticalAlignment="Bottom" FontSize="18.667" />
-                            <ComboBox x:Name="cbServerIP" HorizontalAlignment="Left" Margin="394,50,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" SelectionChanged="comboBox_SelectionChanged">
-                                <ComboBoxItem Content="tmi.twitch.tv" />
-                            </ComboBox>
-                            <ComboBox x:Name="cbServerPort" HorizontalAlignment="Left" Margin="568,51,0,0" VerticalAlignment="Top" Width="60" SelectedIndex="0" SelectionChanged="comboBox_Copy_SelectionChanged">
-                                <ListBoxItem Content="6667" />
-                                <ListBoxItem Content="443" />
-                            </ComboBox>
-                            <CheckBox x:Name="cbAutoConnectBot" Content="Auto Connect" HorizontalAlignment="Left" Margin="611,15,0,0" VerticalAlignment="Top" Checked="cbAutoConnectBot_Checked" Unchecked="cbAutoConnectBot_Unchecked" />
-                        </Grid>
-                    </GroupBox>
-                    <Button x:Name="button" Content="Start Webserver" HorizontalAlignment="Left" Margin="10,351,0,0" VerticalAlignment="Top" Width="112" Click="button_Click" />
-                    <GroupBox x:Name="GroupDiscord" Header="DISCORD" HorizontalAlignment="Left" Margin="10,203,0,0" VerticalAlignment="Top" Height="74" Width="806" BorderBrush="Black">
-                        <Grid Margin="0">
-                            <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="709,10,0,0" VerticalAlignment="Top" Width="75" Click="btnLogin_Click" Height="30" />
-                            <Label x:Name="lblBotToken" Content="Bot Token:" HorizontalAlignment="Left" Margin="1,7,0,0" VerticalAlignment="Top" FontSize="18.667"/>
-                            <TextBox x:Name="txtToken" HorizontalAlignment="Left" Height="30" Margin="102,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216" FontSize="18.667" LostFocus="txtToken_LostFocus"/>
-                        </Grid>
-                    </GroupBox>
-                </Grid>
+                <ScrollViewer Margin="0" local:CustomDesignAttributes.VerticalScrollTo="100">
+                    <Grid Background="#FF363636" Margin="0" Height="650">
+                        <GroupBox x:Name="GroupTwitchStreamerLogin" Header="STREAMER LOGIN" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top" Height="74" Width="789" BorderBrush="Black">
+                            <Grid Margin="0">
+                                <Label x:Name="LabelStreamerAccount" Content="Streamer Name" HorizontalAlignment="Left" Margin="1,9,0,0" VerticalAlignment="Top" FontSize="18.667" />
+                                <TextBox x:Name="textBoxStreamerName" HorizontalAlignment="Left" Margin="144,12,0,0" TextWrapping="Wrap" Width="170" ToolTip="Name of the streamer Twitch account." Height="30" VerticalAlignment="Top" Text="StreamerName" FontSize="18.667" LostFocus="textBoxStreamerName_LostFocus" />
+                                <Button x:Name="buttonStreamerConnect" Content="" HorizontalAlignment="Left" Height="32" Margin="325,10,0,0" VerticalAlignment="Top" Width="170" BorderBrush="{x:Null}" BorderThickness="0" Foreground="{x:Null}" ToolTip="Connect the streamer account with Twitch." Click="buttonStreamerConnect_Click">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="images/Twitch_connect_button.png" />
+                                    </Button.Background>
+                                </Button>
+                                <Button x:Name="btnStreamerConnect" Content="Connect" HorizontalAlignment="Left" Margin="692,12,0,0" VerticalAlignment="Top" Width="75" Height="30" Click="btnStreamerConnect_Click" />
+                                <CheckBox x:Name="cbAutoConnectStreamer" Content="Auto Connect" HorizontalAlignment="Left" Margin="594,20,0,0" VerticalAlignment="Top" Checked="cbAutoConnectStreamer_Checked" Unchecked="cbAutoConnectStreamer_Unchecked" />
+                            </Grid>
+                        </GroupBox>
+                        <Button x:Name="btnImport" Content="Import" HorizontalAlignment="Left" Margin="724,620,0,0" VerticalAlignment="Top" Width="75" Click="btnImport_Click" />
+                        <GroupBox x:Name="GroupTwitchBotLogin" Header="BOT LOGIN" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="109" Width="789" BorderBrush="Black">
+                            <Grid Margin="0">
+                                <Label x:Name="lblBotAccount" Content="Bot Name" HorizontalAlignment="Left" Margin="10,0,0,48" VerticalAlignment="Bottom" FontSize="18.667" />
+                                <TextBox x:Name="textBoxBotName" HorizontalAlignment="Left" Margin="146,0,0,50" TextWrapping="Wrap" Width="170" ToolTip="Name of the bot Twitch account." Height="30" VerticalAlignment="Bottom" Text="BotName" FontSize="18.667" LostFocus="textBoxBotName_LostFocus" />
+                                <Button x:Name="buttonBotConnect" Content="" HorizontalAlignment="Left" Height="32" Margin="321,0,0,50" VerticalAlignment="Bottom" Width="170" BorderThickness="0" BorderBrush="{x:Null}" Foreground="{x:Null}" ToolTip="Connect the bot account with Twitch." Click="buttonBotConnect_Click">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="images/Twitch_connect_button.png" />
+                                    </Button.Background>
+                                </Button>
+                                <Button x:Name="btnBotConnect" Content="Connect" HorizontalAlignment="Left" Margin="692,7,0,0" VerticalAlignment="Top" Width="75" Click="btnBotConnect_Click" Height="30" />
+                                <!--<TextBox x:Name="tbChannelName" HorizontalAlignment="Left" Height="30" Margin="146,42,0,0" TextWrapping="Wrap" Text="{Binding Path=(local:Config.ChannelName), Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="170" FontSize="18.667" />-->
+                                <TextBox x:Name="tbChannelName" HorizontalAlignment="Left" Height="30" Margin="146,42,0,0" TextWrapping="Wrap" Text="{Binding ChannelName, Source={StaticResource Config}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="170" FontSize="18.667" />
+                                <Label x:Name="lblChannelName" Content="Channel Name" HorizontalAlignment="Left" Margin="10,0,0,12" VerticalAlignment="Bottom" FontSize="18.667" />
+                                <Label x:Name="lblServer" Content="Server" HorizontalAlignment="Left" Margin="321,0,0,11" VerticalAlignment="Bottom" FontSize="18.667" />
+                                <Label x:Name="lblPort" Content="Port" HorizontalAlignment="Left" Margin="519,0,0,10" VerticalAlignment="Bottom" FontSize="18.667" />
+                                <ComboBox x:Name="cbServerIP" HorizontalAlignment="Left" Margin="394,50,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0" SelectionChanged="comboBox_SelectionChanged">
+                                    <ComboBoxItem Content="tmi.twitch.tv" />
+                                </ComboBox>
+                                <ComboBox x:Name="cbServerPort" HorizontalAlignment="Left" Margin="568,51,0,0" VerticalAlignment="Top" Width="60" SelectedIndex="0" SelectionChanged="comboBox_Copy_SelectionChanged">
+                                    <ListBoxItem Content="6667" />
+                                    <ListBoxItem Content="443" />
+                                </ComboBox>
+                                <CheckBox x:Name="cbAutoConnectBot" Content="Auto Connect" HorizontalAlignment="Left" Margin="594,15,0,0" VerticalAlignment="Top" Checked="cbAutoConnectBot_Checked" Unchecked="cbAutoConnectBot_Unchecked" />
+                            </Grid>
+                        </GroupBox>
+                        <Button x:Name="button" Content="Start Webserver" HorizontalAlignment="Left" Margin="10,620,0,0" VerticalAlignment="Top" Width="112" Click="button_Click" />
+                        <GroupBox x:Name="GroupDiscord" Header="DISCORD" HorizontalAlignment="Left" Margin="10,203,0,0" VerticalAlignment="Top" Height="74" Width="806" BorderBrush="Black">
+                            <Grid Margin="0">
+                                <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="709,10,0,0" VerticalAlignment="Top" Width="75" Click="btnLogin_Click" Height="30" />
+                                <Label x:Name="lblBotToken" Content="Bot Token:" HorizontalAlignment="Left" Margin="1,7,0,0" VerticalAlignment="Top" FontSize="18.667"/>
+                                <TextBox x:Name="txtToken" HorizontalAlignment="Left" Height="30" Margin="102,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="216" FontSize="18.667" LostFocus="txtToken_LostFocus"/>
+                            </Grid>
+                        </GroupBox>
+                    </Grid>
+                </ScrollViewer>
             </TabItem>
             <TabItem x:Name="tabMainDashboard" Header="Twitch Dashboard" IsEnabled="False">
                 <ScrollViewer Height="Auto">

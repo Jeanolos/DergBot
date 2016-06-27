@@ -160,6 +160,7 @@
     <Compile Include="Config.cs" />
     <Compile Include="BotData\Giveaway.cs" />
     <Compile Include="BotData\Quote.cs" />
+    <Compile Include="CustomDesignAttributes.cs" />
     <Compile Include="Dialogs\DialogEditCommand.xaml.cs">
       <DependentUpon>DialogEditCommand.xaml</DependentUpon>
     </Compile>
@@ -213,6 +214,9 @@
     <Compile Include="Models\TwitchResponse.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Video.cs" />
+    <Compile Include="Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SimpleHTTPServer.cs" />
     <Compile Include="BotData\Song.cs" />
     <Compile Include="DatabaseUtils.cs" />
@@ -250,6 +254,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GameWisp API\GameWispAuth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Settings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
