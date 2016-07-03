@@ -8,12 +8,12 @@ To stay tuned about latest updates, we recommend you to follow our Twitter accou
 - Jeanolos | https://twitter.com/tgr_jeanolos
 - Ocgineer | https://twitter.com/ocgineer
 
-# Features
+# Features / TODO
 The basic stuff like any other Twitch bot out there but with additions;
-- Chatty like chat, where you can open individual sub-chats of Viewers for easier access to their messages.
+- Chatty like chat, where you can open individual sub-chats of Viewers for easier access to their messages. ✓
 - Output data (as much as viable/usefull) to json/text files (possibly websocket) for use in dynamic html5 overlays.
-- Multiple giveaway system with each their own settings and entry list for when one is not enough.
-- Discord integration -> set the playing game to for example 'LIVE: {game set on Twitch}'.
+- Multiple giveaway system with each their own settings and entry list for when one is not enough. ✓
+- Discord integration -> set the playing game to for example 'LIVE: {game set on Twitch}'. **Not needed anymore, stupid Discord...**
 - Gamewisp integration for non-partners or when the subbutton is not good enough.
 - Ranks (best of two worlds, Deepbot and Ankhbot);
   - Viewer
@@ -21,7 +21,7 @@ The basic stuff like any other Twitch bot out there but with additions;
   - VIP Bronze
   - VIP Silver
   - VIP Gold
-- Import Points and Hours from Deepbot and Ankhbot and cleanup database;
+- Import Points and Hours from Deepbot and Ankhbot and cleanup database; ✓ (partially)
   - Remove Viewers below x amount of points
   - Remove Viewers below x amount of hours
   - Remove Viewers longer than x days last seen
