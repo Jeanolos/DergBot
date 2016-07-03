@@ -1,4 +1,4 @@
-# OakBot
+# DergBot
 Twitch Bot focused on integration with HTML overlays written in C#
 
 Free, open, solid and feature rich Twitch Bot for everyone to use and to improve.
